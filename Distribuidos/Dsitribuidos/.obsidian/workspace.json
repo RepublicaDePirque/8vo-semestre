@@ -1,0 +1,204 @@
+{
+  "main": {
+    "id": "e64a70bb1f961426",
+    "type": "split",
+    "children": [
+      {
+        "id": "ad11005249d10175",
+        "type": "tabs",
+        "dimension": 43.645699614890894,
+        "children": [
+          {
+            "id": "8e746dedf8fc2e20",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Apuntes.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Apuntes"
+            }
+          }
+        ]
+      },
+      {
+        "id": "958e32b8bd9d83e7",
+        "type": "tabs",
+        "dimension": 56.354300385109106,
+        "children": [
+          {
+            "id": "25d3192956c7e0a1",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "2-arq-sd.pdf"
+              },
+              "icon": "lucide-file-text",
+              "title": "2-arq-sd"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "780db66ad2aee46c",
+    "type": "split",
+    "children": [
+      {
+        "id": "4a0ac2ac4e177216",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "7db329678bbb18ff",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "c620fbad8e0fdd68",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "b653505b429de9e4",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "b36962d7b21fc48c",
+    "type": "split",
+    "children": [
+      {
+        "id": "ff85670dee63d28b",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "dbbf58b2bece05c2",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Apuntes.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Apuntes"
+            }
+          },
+          {
+            "id": "5db33bda690afd03",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links"
+            }
+          },
+          {
+            "id": "6e699ecf1ee2115c",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "1c6ddc9b0f37ebde",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Apuntes.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Apuntes"
+            }
+          }
+        ],
+        "currentTab": 3
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "8e746dedf8fc2e20",
+  "lastOpenFiles": [
+    "4-teoria.pdf",
+    "3-prog-com.pdf",
+    "Apuntes.md",
+    "Pasted image 20250905212249.png",
+    "2-arq-sd.pdf",
+    "Pasted image 20250905203613.png",
+    "Quiz 1.md",
+    "1-intro-sd.pdf",
+    "Welcome.md"
+  ]
+}
