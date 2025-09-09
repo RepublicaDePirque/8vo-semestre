@@ -273,5 +273,202 @@ Una estrategia abstracta de alto nivel que define la estructura general de un si
 #### Servicios de apoyo:
 - **Brokers**
 
+#### Componentes:
+1. **Servicios:** Unidad funcional autónoma.
+2. **Proveedor de servicio:** Entidad que presta el servicio.
+3. **Consumidor de servicios:** Utiliza servicios.
+4. **Contrato de servicio:** Como utilizar el servicio.
+5. **Registro de servicio:** Directorio de servicios.
+6. **Brokers de servicios:** Middleware que facilita comunicación entre servicios.
 
-#### 
+
+### Microservicios:
+***Conjunto de servicios pequeños, independientes, poco acoplados y descentralizados.***
+
+- *Autonomía de equipos, agilidad, mantención y despliegue, escalabilidad, diversidad, etc.*
+- *Complejo, latencia, inconsistencia*
+
+#### Características:
+- Enfocado en única capacidad de negocio.
+- Autónomo.
+- Independencia de implementación
+- Escalable, mejor rendimiento y agilidad.
+
+### Serverless y FaaS (Function as server):
+- ***Serverless: Desarrolladores despliegan aplicaciones sin gestionar la infraestructura.***
+- ***FaaS: Usa serverless para desplegar funciones que se ejecutan bajo depanda en respuesta a eventos y finalizan cuando termina la tarea.***
+
+
+## Mensajería
+***Basado en sistemas que permiten intercambio de mensajes entre apps, servicios, etc. Mejora la escalabilidad y fiabilidad***
+
+#### Características:
+- **Desacomplamiento:** Productores y consumidores operan independientemente y se comunican indirectamente.
+- **Durabilidad:** Almacen de mensajes persistente.
+- **Escalabilidad:** Soporte para grandes volúmenes de mensajes.
+- **Garantía de entrega.**
+- **Ordenamiento:** Mensajes en orden.
+
+### a) Arquitectura orientada a mensajes:
+***Componenetes de comunican indirectamente a través de un intermediario con almacenamiento persistente.
+- Comunicación asíncrónica y desacoplada
+
+### b) Arquitectura dirigida por eventos:
+***Eventos dirigen el flujo de datos y gatillan reacciones. 
+- Comunicación asíncrona y desacoplada
+- Procesamiento en tiempo real.
+- Consistencia eventual
+- Escalable y tolerante.
+
+## Datos compartidos:
+***Procesos interactúan indirectamente a través de espacios compartidos, como bbdd, repositories, etc.***
+
+### Características:
+- Desacompaliemtno de componentes
+- Requiere sincronización y consistencia.
+- Durabilidad de datos.
+
+#### a) Memoria compartida y espacio compartido:
+
+1. ***Memoria compartida distribuída:*** Varios procesos comparten memoria como un espacio de direcciones unificado.
+2. ***Espacio de tuplas:*** Coordinación de procesos que interactúan indirectamente a través de un espacio compartido.
+
+#### b) Sistemas de almacenamiento de datos persistentes:
+***Componentes independientes interactúan asincrónica e indirectamente a través de un espacio compartido almacenado en u medio persistente.***
+
+##### Características:
+1. Datos estructurados, no estructurados y semi-estructurados.
+2. Asegurar durabilidad en medio persistente.
+3. Lenguaje de consulta.
+4. Sincronización.
+5. Rescalabilidad y tolerancia a fallos.
+
+### Caching:
+- Mejora el rendimiento
+- Escalabilidad
+- Alta disponibilidad y tolerancia a fallos.
+
+
+## Arquitectura de redes P2P.
+***Modelo descentralizado donde cada nodo es cliente/servidor.****
+- No cuenta con autoridad central
+- Pares se comunican directamente
+- Auto-organizada.
+
+### Tipos de redes p2p:
+1. ***No estructurados:*** Pares conectados aleatoriamente.
+2. ***Estructurados:*** Usan una topología especifica.
+3. ***P2P híbrido:*** P2P + componentes centralizados.
+
+### Ventajas P2P:
+1. Descentralización
+2. Escalabilidad y distribución
+3. Tolerancia a fallos
+4. Uso eficiente de recursos.
+
+### Desventajas:
+1. Gestión de peers.
+2. Riesgos de seguridad
+3. Coherencia de datos
+4. Alta rotación de nodos.
+
+
+# Nombramiento y descubrimiento:
+***Un nombre se usa para identificar en un programa algún recurso del sistema.***
+- La *resolución del nombre* liga a una entidad una dirección en memoria.
+- Permite acceder y compartir recursos.
+
+##### Tipos de referencias:
+1. Nombre *(Que se quiere buscar)*
+2. Dirección *(Donde está)*
+3. Ruta *(Como llegar)*
+
+## Nombramiento en SD:
+***Asignación y resolución de identificadores. Esto permite descubrir y acceder a recursos sin requerir conocimiento de sus ubicación física.***
+
+- *Resolución de nombres:* Dinámica
+- *Transparencia* de ubicación, migración, eplicación, etc.
+- *Servicio de nombramiento:* Requerido para descubrir dinámicamente componentes
+
+### Algúnas definiciones:
+- **Entidad**
+- **Nombre:** Secuencia de caracteres que permite referenciar una entidad en un sistema. 
+- **Espacio de nombres:** Conjunto de nombres válidos..
+- **Ligado de nombre:** Asociar el nombre con un recurso. Puede ser dinámico o estático.
+- **Nombramiento:** Mapeo entre nombres, id, direcciones, etc.
+
+
+### Tiempo de ligado:
+- **Compilación:** Direcciones fijas son de uso eficiente, pero inflexibles y dificiultan compartir. 
+- **Tiempo de carga:** Direcciones se resuelven al momento de cargar el problema. Más flexible.
+- **Tiempo de ejecución:** Se resuelve en tiempo de ejecución.
+
+
+### Clasificación de nombres:
+1. **Orientado a humanos:** Caracteres legibles, por ejemplo *"www.inf.utfsm.cl"*
+2. **Orientado a sistemas:** Uso eficiente por sistemas, por ejemplo: *200.1.19.23*
+
+3. **Nombre plano:** No tiene estructura, por ejemplo *JuanitoPerez*
+4. **Nombre estructurado:** Está estructurado en varios campos, por ejemplo *usr/remote/bin/share*
+
+### Unicidad de nombres: 
+***Dificil de lograr a gran escala***
+
+#### Para nombres planos:
+Mediante secuencias de caracteres sin estructura para los humanos. Escencialmente dividimos el espacio de nombres usando prefijos. Al hacer esto, una parte del nombre es asignada por una autoridad central y la otra es asignada localmente. 
+
+#### Para nombres estructuradso:
+Se establece una jerarquía para organizar la información. Partiendo desde un punto base, como / en el computador.
+
+
+### Modelos de nombramiento:
+#### Nombramiento plano:
+Sin estructura, son identificadores únicos. Dificil de gesitonar a gran escala, pero eficaz en la busqueda.
+#### Nombramiento jerarquico:
+Estructurado como arbol. Se adapta bien pero requiere más pasos de busqueda.
+
+#### Nombramiento basado en atributos:
+Identifica recursos por propiedades. Es flexible, pero requiere indexación y más procesamiento.
+
+## Resolución de nombres:
+***Mapeo de un nombre de una entidad  a algún atributo.***
+#### Características:
+- Se debe buscar y encontrar en el espacio cierta información asociada a una entidad.
+- Busqueda simple y repetitiva.
+- Implementación puede requerir bajar niveles de abstracción.
+#### Mecanismo de clausura:
+Si la información está distribuída en múltiples sitios hay que saber donde empezar y donde terminar para asegurar encontrar lo buscado.
+
+### a) Resolución de nombres planos:
+1. **Difusión:** Broadcast de un identificador de una entidad a la red.
+	- No escala bien y requiere que todos los procesos escuchen solicitudes.
+2. **Punteros de avance:** Cuando algo se mueve, deja un puntero hacia la siguiente ubicación.
+	- Transparente para el cliente.
+	- No escala bien y cadenas son muy largas. 
+	- Caché puede mitigar el problema.
+3. **Enfoque de base:** Cada entidad tiene una dirección permanente en un domicilio.
+
+### b) Resolución en nombres estructurados:
+1. **Iterativo controlado por el cliente:** Cliente repite la consulta a cada servidor de la cadena hasta llegar a la dirección.
+	1. Cliente le pregunta al primer servidor por dirección completa. 
+	2. Si el servidor no la tiene, referencia al cliente al siguiente servidor. 
+	3. Repetir hasta llegar a la dirección completa.
+2. **Iterativo controlado por el servidor:*** Cliente solo pregunta. El servidor hace el trabajo. 
+3. **Recursivo controlado por el servidor:** La consulta se sumerge recursivamente en la jerarquía de servidores.
+	1. Cliente le pregunta al servidor 1. 
+	2. Servidor 1 le pregunta a servidor 2 en nombre del cliente.
+	3. Repetir hasta encontrar la respuesta.
+	4. La respuesta vuelve por el mismo camino.
+
+## Nombramiento y descubrimiento de componentes:
+
+#### Servicios de nombramiento: nombres estructurados:
+
+##### Servicios de nombre:
+1. Convención y sintaxis
+2. Nombres definidos son únicos para cada entidad.
+3. Puede conectar un conjunto de contextos del mismo tipo.
+##### Servicio de directorio:
+1. Extensión de un servicio de nombre: Entidades tengan varios atributos.
+2. Permite búsquedas basada en atributos.
+

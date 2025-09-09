@@ -4,12 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "ad11005249d10175",
+        "id": "f2a100941725cfad",
         "type": "tabs",
-        "dimension": 43.645699614890894,
         "children": [
           {
-            "id": "8e746dedf8fc2e20",
+            "id": "b43e8fb14edb4964",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -20,25 +19,6 @@
               },
               "icon": "lucide-file",
               "title": "Apuntes"
-            }
-          }
-        ]
-      },
-      {
-        "id": "958e32b8bd9d83e7",
-        "type": "tabs",
-        "dimension": 56.354300385109106,
-        "children": [
-          {
-            "id": "25d3192956c7e0a1",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "2-arq-sd.pdf"
-              },
-              "icon": "lucide-file-text",
-              "title": "2-arq-sd"
             }
           }
         ]
@@ -189,13 +169,14 @@
       "bases:Create new base": false
     }
   },
-  "active": "8e746dedf8fc2e20",
+  "active": "b43e8fb14edb4964",
   "lastOpenFiles": [
-    "4-teoria.pdf",
-    "3-prog-com.pdf",
+    "create a link.md",
     "Apuntes.md",
-    "Pasted image 20250905212249.png",
     "2-arq-sd.pdf",
+    "3-prog-com.pdf",
+    "4-teoria.pdf",
+    "Pasted image 20250905212249.png",
     "Pasted image 20250905203613.png",
     "Quiz 1.md",
     "1-intro-sd.pdf",
