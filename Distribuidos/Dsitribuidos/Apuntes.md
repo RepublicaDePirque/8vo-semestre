@@ -472,3 +472,282 @@ Si la información está distribuída en múltiples sitios hay que saber donde e
 1. Extensión de un servicio de nombre: Entidades tengan varios atributos.
 2. Permite búsquedas basada en atributos.
 
+
+#### Espacio de nombres:
+1. **Nombres** compuestos, definiendo un camino en un grafo dirigido.
+	1. Arcos
+	2. Nodo raíz
+	3. Nodo
+2. **Nodos hoja:** Entidades nombradas.
+3. **Nodos directorios:** Entidades que refieren a otros.
+4. **Enlace simbólico:** Se define agregando en un nodo directorio un nombre absoluto. 
+
+![[Pasted image 20250909145019.png]]
+
+
+## Metas de diseño:
+#### Escalabilidad y buen desempeño: 
+- **Particionamiento** en multiples dominios administrativos y servidores para descentralizar mantención y resolución de datos.
+- **Caching** para nombres resueltos y replicación.
+- **Consistencia eventual** para mejor desempeño.
+#### Alta disponibilidad:  
+Replicar datos para mejor disponibilidad, pero hay que gestionar fallos.
+#### Seguridad:
+Suplantación de identidad, datos sensibles, integridad, etc.
+
+
+## Sistema de archivo Sun-NFS:
+***Protocolo que permite a un computador acceder a archivos a través de una red como carpeta compartida.***
+
+#### Arquitectura y flujo: 
+##### Cliente:
+1. Programa quiere acceder a un archivo. Para eso hace una llamada al sistema sin saber si es u archivo local o remoto.
+2. Sistema de archivo virtual (VFS) intercepta la llamada y define si el archivo es local o corresponde a un archivo remoto. Si es remoto, redirige la operación al CLIENTE NFS.
+3. Cliente NFS empaqueta la solicitud y la envía a través de la red hacia el servidor.
+##### Servidor:
+1. El Servidor NFS recibe la solicitud, la decodifica, y entiende la operación.
+2. Servdor NFS pasa la solicitud al VFS del servidor. 
+3. La información toma el camino inverso.
+
+***Podemos montar diferentes servidores a nuestro nodo.***
+
+1. *Permite escalamiento:* Permite centralizar el almacenamiento en servidores dedicados. 
+2. *Transparencia de acceso y ubicación:* No nos importa como clientes donde se encuentra la información, pero podemos acceder a ella facilmente. 
+
+## Lightweight directory access protocol:
+***Permite acceder y gestionar servicios de directorio. Su función principal es centralizar información para que sea consultada de manera eficiente.***
+
+#### Base de información de directorio:
+DIB: A diferencia de una BD tradicional, un directorio está optimizado para lecturas y búsquedas rápida a través de TCP/IP
+
+#### Estructura jerarquica:
+La info no se guarda en tablas planas, sino en estructuras similares a un arbol de carpetas. Esto permite organizar de manera lógica y escalable organizacioens y departamentos.
+
+#### Entradas y atributos:
+Cada objeto es una entrada o nodo en el arbol. Cada entrada tiene un nombre único y contiene <atributo, valor> que lo describe.
+
+
+# Capitulo 3-------------------------------------------
+
+# Programación distribuida y comunicación:
+
+## Programación distribuida
+***Múltiples programas o componentes se ejecutan en diferentes computadores conectados para lograr un objetivo común.***
+
+#### Conceptos claves: 
+1. Protocolos de comunicación
+2. Coordinación y sncronización
+3. Tolerancia a fallos
+4. Consistencia de datos.
+
+## Programación concurrente:
+***Múltiples tareas o procesos que se traslapan en su ejecución y pueden interactuar entre si.***
+
+#### Programación distribuida:
+1. Programas que se ejecutan en multiples máquinas independientes.
+2. Cada maquia con su CPU y memoria. Se comunican por red.
+3. **Desafíos:** Fallas, latencia, consistencia, escalabilidad, etc.
+#### Programación paralela:
+1. Ejecución simultanea de tareas en varios CPUs o núcleos.
+2. Procesadores comparten memoria, o tienen acceso a la memoria de los demás.
+3. **Desafíos:** Sincronización, uso de memoria. consistencia, etc.
+
+## Paradigmas de comunicación:
+#### a) Control
+Comunicación directa a través del paso de parametros y resultados.
+#### b) Memoria compartida
+Comunicación indireta mediante un espacio de almacenamiento de datos compartido. Requiere control de concurrencia.
+#### c) Mensajes
+Paso de mensajes y data streaming.
+## Protocolos de redes de comunicación:
+***Conjunto de reglas para que dos computadoras puedan hablar entre si***
+#### Capas de la comunicación:
+1. **Modelo TCP/IP:** Modelo real del internet con 4 capas principales. 
+2. **OSI:** Modelo teórico con 7 capas. 
+
+#### Calidad del servicio:
+***Características y garantías que nos ofrece un protocolo de comunicación:***
+
+1. **Desempeño:** Que tan rápida es la comunicación *(Latencia y throughput)*
+2. **Control de flujo**
+3. **Ordenamiento:** Orden de los mensajes
+4. **FIabilidad:** Garantía de entrega
+5. **Durabilidad:** Mensajes persistentes
+6. **Seguridad:** Autenticación y control de confidencialidad.
+#### Gestion de la comuniacación:
+- **Endpoints:** E/S de la comunicación en cada programa. 
+- **Coordinación:** Establecimiento, mantención y terminación de una conversación de manera estructurada.
+- **Enlaces de comunicación:** Reserva de recursos en la red para garantizar una conversación. 
+- **Memoria:** Almacenar temporalmente mensajes que se envían o reciben.
+
+## Comunicación basada en mensajes:
+#### Patrones de flujo:
+- One to one
+- One to many
+#### Dirección:
+- Unidireccional
+- Bidireccional-
+#### Sincronismo:
+- Sincrónico
+- Asincrónico
+#### Ordenamiento de mensajes:
+- Sin ordenamiento
+- FIFO
+- Orden parcial
+- Orden total
+#### Control de flujo:
+- Regula flujo de mensajes.
+#### Garantía de entrega:
+- Maybe
+- At least once
+- At most once
+- Exactly once.
+#### Persistencia:
+- Transiente
+- Persistente
+#### Seguridad:
+- Autenticación
+- Cifrado
+- Control de integridad.
+
+
+## Sincronización de mensajes:
+#### En el iniciador:
+- Paso de mensaje unidireccional
+- Request-Reply bidireccional.
+#### En el receptor:
+- Recepción explicita o implicita.
+- Recepción selectiva
+- Recepción con límite de tiempo.
+
+## Multicasting:
+***Un emisor transmite a un grupo de receptores simultáneamiente.***
+- Grupo abstrae una unidad de interacción
+- Distribución de datos eficiente y escalable
+- Distribución de carga paralela.
+- Descubrimiento de recursos.
+- Útil para tolerancia a fallos.
+
+**Desafíos:**
+1. Escalabilidad y rendimiento
+2. FIabilidad y consistencia
+3. Seguridad.
+
+#### Semántica de multitasking:
+###### Entrega de mensajes:
+- Semántica de entrega
+	- Fiabilidad
+	- Ordenamiento
+- Semántica de respuesta:
+	- Fiabilidad
+	- Sincronización con el emisor
+###### De grupo:
+- Clausura:
+	- Grupos cerrador
+	- Grupos abiertos
+- Simetría:
+	- Simétricos: peer.
+	- Asimétricos: Coordinador central.
+
+# Comunicación entre procesos a través de sockets:
+
+## API de Sockets:
+***Una interfaz para comunicación entre procesos o maquinas***
+***Un socket es escencialmente una tupla  \<id-puerto> que permite entablar una puerta de enlace para el envío y recepción de paquetes.***
+
+### a) Sockets con UDP
+**Endpoint que usa UDP para enviar y recibir mensajes datagramas. Lo principal relacionado con UDP, es que es un protocolo no orientado a la conexión y no fiable.
+
+1. Servidor crea un socket UDP.
+2. Lo liga a una dirección ip y número de puerto..
+3. Se queda a la espera de que haya ruido en ese puerto.
+
+4. El cliente crea su propio socket UDP y el sistema puede asigrnarle un puerto.
+5. Para enviar un mensaje, crea un datagrama que contiene los datos de la ip y el servidor.
+6. Envia el datagrama a través de su socket.
+
+##### Pero porque? 
+Baja latencia, velocidad, menos sobrecarga, soporte para multi y broadcast.
+
+### b) Sockets con TCP
+***Establece un canal de comunicación fiable, orientado a la conexión y basado enstram de datos.***
+
+*La principal diferencia es que primero TCP establece una conexión, mientras que UDP no. *
+
+1. Servidor crea un socket TCP.
+2. Lo liga a una ip y puerto.
+3. Pone el socket en modo listen, preparandoo para aceptar conexiones entrantes.
+4. Espera que alguien se conecte.
+
+5. El cliente crea su propio TCP
+6. Inicia la conexión indicando direcctión y puerto.
+7. Despues de aceptar la conexión, puedes armar un flujo continuo por el socket.
+
+##### Pero porque?
+Principalmente, fiabilidad. No tienes que preocuparte por pérdida de datos, etc; control de flujo, y control de congestión.
+
+***Pero:*** Hay sobrecarga y latencia en comparación con UDP debido al handshake, confirmaciones, etc.
+
+### c) Multicast IP
+- **Abstraccion:** Es una abstracción del MC físico, donde escencialmente los Datagramas IP se transmiten a redes separadas.
+- **Calidad de servicio:** Sin conexión, sin orden y entrega de mejor esfuerzo
+- **Gestión de grupos:** Grupos dinámicos. El emisor no conoce los destinatarios de sus mensajes.
+
+#### Direcciones Multicast:
+- **IPv4:** 32 bits de clase D *(comienzan con 1110)*
+	- 224.0.0.0 - 239.255.255.255
+		- 224.0.0.0 no se usa
+		- 224.0.0.1 a todos.
+	- 224.0.1.0 - 238.255.255.255
+		- Grupos a través de internet.
+	- 239.0.0.0 - 239.255.255.255
+		- Grupos privados.
+- **IPv6:** Direcciones de 128 bits y comienzan con 0xff
+
+#### Multicast e Internetworking:
+***Como enviar un paqute a un grupo cuyos miembros están dispersos en redes diferentes.***
+##### Red sobrepuesta:
+Los routers no pueden usar las tablas de ruteo normales. En ves, deben construir una red sobrepuesta, o un arbol de distribución lógico. Escencialmente es una red virtual construida sobre la infraestructura del internet dedicada a enrutar tráfico multicast.
+##### Limitar el alcance:
+Fundamental ya que un paquete puede terminar en todas partes del internet.
++ **En ipv4:** Usando TTL
++ **En ipv6:** Usando el campo scope que define si es para una red local, un sitio, organización, o el mundo.
+#### Gestión de grupos en multicast:
+- **Protocolo IGMP:** Usado por maquinas para reportar su membresia a routers cercanos.
+- **Routers:** Intercambian información periodicamente sobre estado de membresía en su red.
+	- Aparece Protocol.Independent Multicast para ruteo.
+	- Uso de tunneling para enviar paquetes a través de redes sin multicasting.
+- *Send() y Recieve()*
+- *JoinHostGroup() y LeaveHostGroup()*
+
+
+#### Evaluación:
+##### Soporte
+No es bien soportado en internet ya que no todas las redes son compatibles, consume recursos, la configuración es compleja, etc.
+Por otro lado, con IPv6 soporta mejor el multicast, pero sigue siendo poco frecuente.
+
+
+# Intercambio de datos en ambientes distribuídos:
+## Representación de datos:
+***Surge de la necesidad de que los datos sean heterogeneos, puedan operar entre si siguiendo un estandar común.***
+##### Solucion:
+Formatos de estándares de representación de datos y metodos de serialización y deserialización de los datos.
+
+## Serialización y deserialización de datos:
+#### Marshalling:
+Ensamblar en el emisor los datos a ser intercambiados.
+#### Unmarshalling:
+Proceso inverso, donde el receptos determina para un programa los valores de variables.
+
+
+## Protocolos de intercambios de datos:
+
+#### Formatos de representación de los datos:
+- **Binario:** Compacto y eficiente, pero solo legible para maquinas. 
+- **Textual:** Strings de caracteres, legibles por humanos, menos eficiente y requiere mayor procesamiento para parsing de caracteres.
+#### Técnicas de codificación:
+- **Autocontenida:** Datos se autodescriben. 
+	- Interpretación de mensajes independiente al emisor.
+	- Puede ser binaria o textual.
+- **Acordada:** Partes comparten formato de codificación correcta.
+-  

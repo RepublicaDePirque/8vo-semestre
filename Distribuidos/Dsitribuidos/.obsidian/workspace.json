@@ -78,7 +78,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "b36962d7b21fc48c",
@@ -171,10 +172,12 @@
   },
   "active": "b43e8fb14edb4964",
   "lastOpenFiles": [
-    "create a link.md",
+    "3-prog-com.pdf",
     "Apuntes.md",
     "2-arq-sd.pdf",
-    "3-prog-com.pdf",
+    "Pasted image 20250909145019.png",
+    "Pasted image 20250909145007.png",
+    "create a link.md",
     "4-teoria.pdf",
     "Pasted image 20250905212249.png",
     "Pasted image 20250905203613.png",
