@@ -6,9 +6,10 @@
       {
         "id": "f2a100941725cfad",
         "type": "tabs",
+        "dimension": 99.99999999999999,
         "children": [
           {
-            "id": "b43e8fb14edb4964",
+            "id": "5ea275840da00a80",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -170,8 +171,9 @@
       "bases:Create new base": false
     }
   },
-  "active": "b43e8fb14edb4964",
+  "active": "5ea275840da00a80",
   "lastOpenFiles": [
+    "Pasted image 20250910224318.png",
     "3-prog-com.pdf",
     "Apuntes.md",
     "2-arq-sd.pdf",

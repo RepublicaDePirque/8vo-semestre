@@ -750,4 +750,91 @@ Proceso inverso, donde el receptos determina para un programa los valores de var
 	- Interpretación de mensajes independiente al emisor.
 	- Puede ser binaria o textual.
 - **Acordada:** Partes comparten formato de codificación correcta.
--  
+
+
+# Invocación remota:
+***Mecanismo de comunicación entre procesos que permite invocar funciones en otros procesos.***
+- Abstrae la comunicaciónd de red generando transparencia de acceso.
+## STUB:
+**Ayudantes que facilitan la comunicación entre dos pares de manera transparente.**
+##### Ejemplo simple:
+Como gerente quieres enviar una orden al director de operaciones en Alemania.
+1. Tu asistente *(Stub)* recibe tu orden en español.
+2. El asistente traduce la información a un formato neutro. *(Marshalling)*
+3. El asistente envía el mensaje.
+4. El asistente remoto *(Stub)* recibe el mensaje y lo desempaqueta del lenguaje neutro al lenguaje del director alemán.
+5. El asistente remoto entrega el paquete al director quien lo lee en su idioma.
+
+##### Desafíos:
+- Latencia
+- Serialización
+- Fallas parciales
+- Seguridad
+
+## Generación automátiva de STUBS:
+***Uso de IDL***
+- El IDL escencialmente describe la interfa de un servicio remoto de manera neutral, sin ligarse a algún lenguaje.
+#### Proceso:
+1. Se define un contrato IDL en formato .idl
+	1. Este tiene la función de traducir, y de obtener idiomas soportados.
+2. Usando un compilador de IDL generamos un codigo fuente para el LP a elección.
+3. El compilador produce archivos con métodos para lo que es el proceso de marshalling, comunicación, y unmarshalling.
+4. Ambas partes importan los archivos de traducción. 
+
+## Ligado dinámico:
+Gracias a la creación de un intermediario, el cliente y servidor pueden conectarse sin saber sus ubicaciones de antemano, un servidor de nombres.
+
+
+## Descubrimiento y ligado en invocaciones remotas:
+#### Descubrimiento:
+1. **Configuración estática**
+2. **Portmapper:** mapea nombre del servicio en puerto en maquina fija
+3. **Descubrimiento integrado**
+4. **Servicios de directorio**
+5. **Servicios de registro**
+#### Tipos de ligados:
+- **Estático:** No requiere resolver, inflexible.
+- **Dinámico:** Dirección del servidor se resuelve en ejecución.
+- **Stub Cliente:** Actúa como proxy y resuelve transparentemente.
+
+## Transparencia de invocaciones remotas:
+***Diferencias entre local y remota**
+- **Rendimiento**
+- **Paso de parametros:** Sin memoria compartida es dificil la transparencia.
+- **Fiabilidad:** Procesos pueden fallar
+
+## Semántica de fallas en invocaciones remotas:
+***Las cosas pueden salir mal si invocas una función remota, entre eso, fallas de servidor, perdidas de mensajes, etc; La semántica de fallas define qué garantía tienes como programador sobre si se ejecutó o no la operación.
+
+**Op:** Número de veces que el servidor ejecuta la operación.
+**Res:** Número de veces que el cliente recibe el resultado.
+
+#### 4 garantías:
+
+1. ***Maybe:*** Es la menos fiable. Se envía el mensaje una vez y se olvida. Si se falla, o se pierde no se reintenta.
+2. ***At least once:*** Se asegura que llegó el mensaje al servidor. Si no recibe la confirmación lo reenvía. El riesgo es que el servidor puede recibir el mensaje duplicado.
+3. ***At most once:*** Si el servidor recibe un mensaje reenviado lo ignora. O llega una vez, o no llega.
+4. ***All or nothing:*** O el mensaje se envía y el servidor lo recibe, o la operación de cancela por completo, como si no hubiese sido enviado.
+![[Pasted image 20250910224318.png]]
+
+## Variaciones al modelo de inovación remota:
+- **Idempotencia:** Repetición del procesamiento de una petición produce el mismo resultado
+- **Renuncia a la respuesta:** Solo existe petición.
+- **Delegación:** Respuesta puede ser generada por terceros.
+- **Llamada de vuelta:** Se pasa una dirección del cleitne para realizar invocaciones inversas.
+- **Streaming de múltiples peticiones y/o respuestas:** Flujo de peticiones/respuestas sin sincronización.
+- **Invocación múltiple:** Tipo multicast.
+
+## Conclusiones sobre invocación remota:
+#### Ventajas:
+- Uso de un paradigma bien conocido por los programadores facilita programación distribuída.
+- Abstrae comunicación remota.
+- Modelo apoya bien uso de procesos y hebras para mayor concurrencia o paralelismo.
+- Reduce esfuerzo de desarrollo al automatizar generación de código para lógica de comunicación y manejo de mensajes.
+- integra bien otros servicios de apoyo requeridos.
+
+#### Desventajas:
+- Define modelo de comunicación acoplado.
+- Requiere sincronizar cliente con servidor.
+- Uso de entornos distribuídos es complejo.
+- No existen estándares comunes bien establecidos en la industria. Es bastante diverso.
