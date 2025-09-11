@@ -598,10 +598,11 @@ Paso de mensajes y data streaming.
 #### Control de flujo:
 - Regula flujo de mensajes.
 #### Garantía de entrega:
+***Más adelante se profundiza
 - Maybe
 - At least once
 - At most once
-- Exactly once.
+- Exactly once
 #### Persistencia:
 - Transiente
 - Persistente
@@ -633,7 +634,7 @@ Paso de mensajes y data streaming.
 2. FIabilidad y consistencia
 3. Seguridad.
 
-#### Semántica de multitasking:
+#### Semántica de multicasting:
 ###### Entrega de mensajes:
 - Semántica de entrega
 	- Fiabilidad
@@ -739,7 +740,6 @@ Ensamblar en el emisor los datos a ser intercambiados.
 #### Unmarshalling:
 Proceso inverso, donde el receptos determina para un programa los valores de variables.
 
-
 ## Protocolos de intercambios de datos:
 
 #### Formatos de representación de los datos:
@@ -750,7 +750,6 @@ Proceso inverso, donde el receptos determina para un programa los valores de var
 	- Interpretación de mensajes independiente al emisor.
 	- Puede ser binaria o textual.
 - **Acordada:** Partes comparten formato de codificación correcta.
-
 
 # Invocación remota:
 ***Mecanismo de comunicación entre procesos que permite invocar funciones en otros procesos.***

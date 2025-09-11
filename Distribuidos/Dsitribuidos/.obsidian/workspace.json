@@ -6,7 +6,6 @@
       {
         "id": "f2a100941725cfad",
         "type": "tabs",
-        "dimension": 99.99999999999999,
         "children": [
           {
             "id": "5ea275840da00a80",
@@ -79,8 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "b36962d7b21fc48c",
@@ -173,14 +171,14 @@
   },
   "active": "5ea275840da00a80",
   "lastOpenFiles": [
-    "Pasted image 20250910224318.png",
+    "4-teoria.pdf",
     "3-prog-com.pdf",
     "Apuntes.md",
+    "Pasted image 20250910224318.png",
     "2-arq-sd.pdf",
     "Pasted image 20250909145019.png",
     "Pasted image 20250909145007.png",
     "create a link.md",
-    "4-teoria.pdf",
     "Pasted image 20250905212249.png",
     "Pasted image 20250905203613.png",
     "Quiz 1.md",
