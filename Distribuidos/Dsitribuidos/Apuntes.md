@@ -637,7 +637,7 @@ Paso de mensajes y data streaming.
 #### Semántica de multicasting:
 ###### Entrega de mensajes:
 - Semántica de entrega
-	- Fiabilidad
+	- Fiabilidad *(La calidad de los mensajes)*
 	- Ordenamiento
 - Semántica de respuesta:
 	- Fiabilidad
@@ -673,7 +673,7 @@ Baja latencia, velocidad, menos sobrecarga, soporte para multi y broadcast.
 ### b) Sockets con TCP
 ***Establece un canal de comunicación fiable, orientado a la conexión y basado enstram de datos.***
 
-*La principal diferencia es que primero TCP establece una conexión, mientras que UDP no. *
+*La principal diferencia es que primero TCP establece una conexión, mientras que UDP no.*
 
 1. Servidor crea un socket TCP.
 2. Lo liga a una ip y puerto.
